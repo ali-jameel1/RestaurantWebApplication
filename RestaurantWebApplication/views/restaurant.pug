@@ -1,0 +1,69 @@
+html(lang="en")
+    head
+        title #{restaurant.name}
+        link(rel="stylesheet", href="/css/restaurant.css")
+        script(src="/js/client.js" defer)
+    body(onload="init()")
+        include ./partials/header
+        
+        .container
+            ul
+                li 
+                    b ID: 
+                    b(id="id") #{restaurant.id}
+                li 
+                    label(for="name") Restaurant:
+                    input(type="text" id="name" value=restaurant.name)
+                li 
+                    label(for="deliveryFee") Delivery Fee: $
+                    input(type="text" id="feeDel" value=restaurant.delivery_fee)
+                li
+                    label(for="orderMin") Minimum Order: $
+                    input(type="text" id="minOrder" value=restaurant.min_order)
+        #main
+        #left.column.left
+            b Categories
+            br
+            each item, category in restaurant.menu
+                a(href="#" + category) #{category}
+                br
+        #middle.column.middle
+            each items, category in restaurant.menu
+                b #{category}
+                a(name= category)
+                br
+                each item, id in items
+                    p(id=id) 
+                        | #{item.name} ($#{item.price})
+                        br
+                        | #{item.description}
+        #right.column.right
+                h4 Add Category:
+                label(for="categoryName" ) Category Name:
+                input(type="text" id="categoryName")
+                br
+                input(type="submit" value="Add Category" onclick="addCategory()")
+                br
+                br
+
+                h4 Add Item:
+                label(for="itemCategory" ) Select Category:
+                select#category-select
+                    each item, category in restaurant.menu
+                        option(value=category) #{category}
+                br
+                label(for="itemName" ) Item Name:
+                input(type="text" id="itemName")
+                br
+                label(for="itemDescription") Item Description:
+                input(type="text" id="itemDescription")
+                br
+                label(for="itemPrice") Item Price:
+                input(type="text" id="itemPrice")
+                br
+                input(type="submit" value="Add Item" onclick="addItem()")
+                br
+                br
+
+                input(type="submit" value="Save Changes" onclick="updateRestaurant()")
+

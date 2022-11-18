@@ -1,0 +1,12 @@
+html(lang="en")
+    head
+        title Restaurants Options
+        link(rel="stylesheet")
+    body
+        include ./partials/header
+        
+        .container
+        h1 Restaurants
+        each restaurant in restaurantList
+            br
+            a(href="/restaurants/" + restaurant.id) #{restaurant.name} + #{restaurant.id}

@@ -1,0 +1,11 @@
+html(lang="en")
+    head
+        title Add Restaurant
+        link(rel="stylesheet", href="/css/addrestaurant.css")
+        script(src="/js/client.js")
+    body
+        include ./partials/header
+        
+        form(id="add-restaurant" action="javascript:addRestaurant()")
+            include ./partials/restaurantInfo
+            input(type="submit" value="Add Restaurant")
