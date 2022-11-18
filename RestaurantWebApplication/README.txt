@@ -1,6 +1,4 @@
-COMP 2406 
 Ali Jameel
-Assignment 3
 
 Purpose: Create a website in which multiple retaurants can be viewed, created and placed orders on
 
